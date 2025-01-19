@@ -1,11 +1,15 @@
 package com.springboot.coffee.entity;
 
+import com.springboot.order.entity.Order;
+import com.springboot.order.entity.OrderCoffee;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -27,6 +31,10 @@ public class Coffee {
 
     @Column(length = 3, nullable = false, unique = true)
     private String coffeeCode;
+
+    //매핑
+    @OneToMany(mappedBy = "coffee", cascade = CascadeType.ALL)
+    private List<OrderCoffee> orderCoffees = new ArrayList<>();
 
     // 커피 상태 추가
     @Enumerated(value = EnumType.STRING)

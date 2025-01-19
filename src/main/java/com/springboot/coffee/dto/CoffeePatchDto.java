@@ -30,4 +30,5 @@ public class CoffeePatchDto {
     public Integer getPrice() {
         return price;
     }
+
 }
